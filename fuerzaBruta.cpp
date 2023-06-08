@@ -4,7 +4,7 @@
 using namespace std;
 
 void fuerza_bruta(vector<bool> &E, vector<int> &X, vector<int> S, const int c);
-int fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c);
+long long fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c);
 template <typename S> void print_vector(vector<S> &vec);
 
 int main(int argc, char** argv){
@@ -42,7 +42,7 @@ int main(int argc, char** argv){
     while((jmp*=p) <= n);
 
     if (n < 10) fuerza_bruta(E, X, S, 0);
-    printf("N° Soluciones: %d\n", fuerza_bruta_cont(E, n, X, 0));
+    cout << "N° Soluciones: " << fuerza_bruta_cont(E, n, X, 0) << endl;
 
     return EXIT_SUCCESS;
 }
@@ -62,8 +62,8 @@ void fuerza_bruta(vector<bool> &E, vector<int> &X, vector<int> S, const int c){
     }
 }
 
-int fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c){
-    int ac = 0;
+long long fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c){
+    long long ac = 0;
     for (int x: X){
         if (c + x < n && E[c + x - 1])
             ac += fuerza_bruta_cont(E, n, X, c + x);
