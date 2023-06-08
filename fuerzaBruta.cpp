@@ -5,6 +5,7 @@ using namespace std;
 
 void fuerza_bruta(vector<bool> &E, vector<int> &X, vector<int> S, const int c);
 long long fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c);
+long long escalera64(vector<long long> &D, vector<bool> &E, const int n, vector<int> &X, const int c);
 template <typename S> void print_vector(vector<S> &vec);
 
 int main(int argc, char** argv){
@@ -41,8 +42,12 @@ int main(int argc, char** argv){
     do X.push_back(jmp);
     while((jmp*=p) <= n);
 
-    if (n < 10) fuerza_bruta(E, X, S, 0);
-    cout << "N° Soluciones: " << fuerza_bruta_cont(E, n, X, 0) << endl;
+    // if (n < 10) fuerza_bruta(E, X, S, 0);
+    // cout << "N° Soluciones: " << fuerza_bruta_cont(E, n, X, 0) << endl;
+
+    // Usando PD
+    vector<long long> D(n, INT64_MIN);
+    cout << "N° Soluciones: " << escalera64(D, E, n, X, 0) << endl;
 
     return EXIT_SUCCESS;
 }
@@ -70,6 +75,21 @@ long long fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const 
         
         else if (c + x == n)
             return ++ac;
+    }
+    return ac;
+}
+
+long long escalera64(vector<long long> &D, vector<bool> &E, const int n, vector<int> &X, const int c){
+    if (D[c] > INT64_MIN)
+        return D[c];
+
+    long long ac = 0;
+    for (int x: X){
+        if (c + x < n && E[c + x - 1])
+            D[c] = (ac+=escalera64(D, E, n, X, c + x));
+        
+        else if (c + x == n)
+            return D[c]=++ac;
     }
     return ac;
 }
