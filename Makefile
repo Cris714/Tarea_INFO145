@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall -std=c++17
+CFLAGS=-Wall -O3
 BINS=fuerzaBruta
 all: clean problema
 
