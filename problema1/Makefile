@@ -1,10 +1,10 @@
 CC=g++
 CFLAGS=-Wall -O3
-BINS=fuerzaBruta
+BINS=problema1
 all: clean problema
 
 problema:
-	$(CC) $(CFLAGS) -o $(BINS) fuerzaBruta.cpp
+	$(CC) $(CFLAGS) -o $(BINS) problema1.cpp
 
 clean:
 	@echo " [CLN] Removing binary files"
