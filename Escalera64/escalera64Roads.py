@@ -23,10 +23,11 @@ def escalera64(S="Set con los saltos", E="Lista con los peldaños", D="Set con l
     return A[-1].value
 
 def main():
-    largoEscalera = 12
+    largoEscalera = 30
     E=[i+1 for i in range(largoEscalera)]
-    D = {4,11}
-    S={1,3,9}
+    D = {}
+    p=2
+    S=S={power(p,i) for i in range(int(log2(len(E))/log2(p))+1)}
     print(f"E: {E}\nD: {D}\nS: {S}\nSalida: {escalera64(S,E,D)}")
 
 if (__name__ == "__main__"):

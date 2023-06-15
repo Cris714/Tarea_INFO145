@@ -28,19 +28,21 @@ def escalera64(S="Set con los saltos", E="Lista con los peldaños", D="Set con l
 
 def main():
     
-    '''
-    largoEscalera = 900
+    
+    largoEscalera = 100
     E=[i+1 for i in range(largoEscalera)]
-    D = {1,3,4}
-    S={1,2,4}
+    D = {}
+    p=2
+    S={power(p,i) for i in range(int(log2(len(E))/log2(p))+1)}
     '''
     
-    largoEscalera=900
+    largoEscalera=100
+    
     E=[i+1 for i in range(largoEscalera)]
     D={randint(1,len(E)) for _ in range(int(log2(largoEscalera))+1) }
     p=randint(2,5)
     S={power(p,i) for i in range(int(log2(len(E))/log2(p))+1)}
-
+    '''
     inicio = time.perf_counter()
     print("E:" + [f" {len(E)} (Largo)", f"{E}"][len(E)<=100] + f"\nD: {D}\nS: {S}\nSalida: {escalera64(S,E,D)}")
     final = time.perf_counter()
