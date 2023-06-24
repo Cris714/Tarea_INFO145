@@ -11,7 +11,7 @@ struct Escalon {
     vector<unsigned long long> road;
 };
 
-int escalera64(unsigned long long* S, Escalon* E, int n, int k) {
+Escalon* escalera64(unsigned long long* S, Escalon* E, int n, int k) {
     
     for (int j = 0; j < k; j++){
         if (E[S[j]-1].value != INF){
@@ -33,7 +33,7 @@ int escalera64(unsigned long long* S, Escalon* E, int n, int k) {
             }
         }
     }
-    return E[n-1].value;
+    return E;
 }
 
 int main() {
@@ -42,7 +42,7 @@ int main() {
     
     // Parametros de entrada
     int p = 2;
-    int largoEscalera = 10;
+    int largoEscalera = 20;
     
     // Creacion de vector con escalones
     Escalon* E = new Escalon[largoEscalera]; //n
@@ -82,7 +82,7 @@ int main() {
     auto final = chrono::high_resolution_clock::now();;
     
     // Escribir los Resultados
-    printf("%llu",E[largoEscalera-1].value);
+    printf("%llu",(E[largoEscalera-1].value == INF ? 0 : E[largoEscalera-1].value));
     if (largoEscalera < 101){
         printf("\nResultados: [");
         for (int i = 0; i < largoEscalera; i++) {

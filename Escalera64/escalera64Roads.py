@@ -21,7 +21,7 @@ def escalera64(S="Set con los saltos", E="Lista con los peldaños", D="Set con l
     return E[-1]
 
 def main():
-    largoEscalera = 6
+    largoEscalera = 20
     E=[escalon() for _ in range(largoEscalera)]
     D = {}
     p=2
