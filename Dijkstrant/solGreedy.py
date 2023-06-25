@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import heapq
 
-class Graph:
+class DGraph:
     def __init__(self):
         self.Ad = {}
 
@@ -51,7 +51,7 @@ def draw_graph(graph, distances):
 
 def main():
     # Crear grafo dirigido
-    directed_graph = Graph()
+    directed_graph = DGraph()
     directed_edges = [('X', 'Y', 5), ('Y', 'Z', 2), ('Z', 'W', 3), ('W', 'V', 1), ('X', 'Z', 4)]
     for src, dest, weight in directed_edges:
         directed_graph.add_edge(src, dest, weight=weight)
