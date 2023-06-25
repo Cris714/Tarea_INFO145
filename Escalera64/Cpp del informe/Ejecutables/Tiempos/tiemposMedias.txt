@@ -1,0 +1,159 @@
+Con n = 5:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta (cant): 236.67
+            Escalera64 (Base): 150
+            Escalera64 (Guardar caminos): 10326.67
+            Escalera64 (Menor camino): 5163.33
+        Con r = 1:
+            Fuerza Bruta (cant): 116.67
+            Escalera64 (Base): 200
+            Escalera64 (Guardar caminos): 5710
+            Escalera64 (Menor camino): 4613.33
+        Con r = 2:
+            Fuerza Bruta (cant): 83.33
+            Escalera64 (Base): 163.33
+            Escalera64 (Guardar caminos): 4633
+            Escalera64 (Menor camino): 4400
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta (cant): 143.33
+            Escalera64 (Base): 120
+            Escalera64 (Guardar caminos): 6429.67
+            Escalera64 (Menor camino): 4073.33
+        Con r = 1:
+            Fuerza Bruta (cant): 116.67
+            Escalera64 (Base): 136.67
+            Escalera64 (Guardar caminos): 5223.33
+            Escalera64 (Menor camino): 3706.33
+        Con r = 2:
+            Fuerza Bruta (cant): 93.33
+            Escalera64 (Base): 136.67
+            Escalera64 (Guardar caminos): 4616.33
+            Escalera64 (Menor camino): 3316.67
+Con n = 10:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta (cant): 786.67
+            Escalera64 (Base): 240
+            Escalera64 (Guardar caminos): 52649.67
+            Escalera64 (Menor camino): 5546.67
+        Con r = 2:
+            Fuerza Bruta (cant): 570
+            Escalera64 (Base): 333.33
+            Escalera64 (Guardar caminos): 15473
+            Escalera64 (Menor camino): 4783.33
+        Con r = 4:
+            Fuerza Bruta: 143.33
+            Escalera64 (Base): 286.67
+            Escalera64 (Guardar caminos): 13460
+            Escalera64 (Menor camino): 4416.67
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 393.33
+            Escalera64 (Base): 186.67
+            Escalera64 (Guardar caminos): 20050.33
+            Escalera64 (Menor camino): 4713.33
+        Con r = 2:
+            Fuerza Bruta: 326.67
+            Escalera64 (Base): 273.33
+            Escalera64 (Guardar caminos): 10063
+            Escalera64 (Menor camino): 3083.33
+        Con r = 4:
+            Fuerza Bruta: 140.67
+            Escalera64 (Base): 243.33
+            Escalera64 (Guardar caminos): 5426.67
+            Escalera64 (Menor camino): 4330
+Con n = 20:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta: 169839
+            Escalera64 (Base): 303.33
+            Escalera64 (Guardar caminos): 15288484.33
+            Escalera64 (Menor camino): 7836.33
+        Con r = 3:
+            Fuerza Bruta: 14776.67
+            Escalera64 (Base): 453.33
+            Escalera64 (Guardar caminos): 745053.67
+            Escalera64 (Menor camino): 7206.33
+        Con r = 9:
+            Fuerza Bruta: 636.67
+            Escalera64 (Base): 416.67
+            Escalera64 (Guardar caminos): 17666.67
+            Escalera64 (Menor camino): 5693.33
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 9006.67
+            Escalera64 (Base): 253.33
+            Escalera64 (Guardar caminos): 636491.67
+            Escalera64 (Menor camino): 6266.67
+        Con r = 3:
+            Fuerza Bruta: 1810
+            Escalera64 (Base): 346.67
+            Escalera64 (Guardar caminos): 76539.33
+            Escalera64 (Menor camino): 6590
+        Con r = 9:
+            Fuerza Bruta: 236.67
+            Escalera64 (Base): 410
+            Escalera64 (Guardar caminos): 8783.33
+            Escalera64 (Menor camino): 5290
+    Con p = 4:
+        Con r = 0:
+            Fuerza Bruta: 3070
+            Escalera64 (Base): 263.33
+            Escalera64 (Guardar caminos): 156332
+            Escalera64 (Menor camino): 6296.67
+        Con r = 3:
+            Fuerza Bruta: 720
+            Escalera64 (Base): 366.67
+            Escalera64 (Guardar caminos): 22469.33
+            Escalera64 (Menor camino): 5400
+        Con r = 9:
+            Fuerza Bruta: 163.33
+            Escalera64 (Base): 360
+            Escalera64 (Guardar caminos): 9263.33
+            Escalera64 (Menor camino): 4290
+Con n = 30:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta: 51769209
+            Escalera64 (Base): 370
+            Escalera64 (Guardar caminos): 5498334283
+            Escalera64 (Menor camino): 9330
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 521842
+            Escalera64 (Base): 393.33
+            Escalera64 (Guardar caminos): 32523518.33
+            Escalera64 (Menor camino): 14999.67
+    Con p = 4:
+        Con r = 0:
+            Fuerza Bruta: 59779.33
+            Escalera64 (Base): 276.67
+            Escalera64 (Guardar caminos): 3702982
+            Escalera64 (Menor camino): 11470
+Con n = 40:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta: 15486226646
+            Escalera64 (Base): 600
+            Escalera64 (Guardar caminos): -1
+            Escalera64 (Menor camino): 15390
+Con p = 3:
+    Con r = 0:
+        Fuerza Bruta: 28798677.33
+        Escalera64 (Base): 393.33
+        Escalera64 (Guardar caminos): 1748019668.33
+        Escalera64 (Menor camino): 12900
+Con p = 4:
+    Con r = 0:
+        Fuerza Bruta: 1636033
+        Escalera64 (Base): 330
+        Escalera64 (Guardar caminos): 102117793.67
+        Escalera64 (Menor camino): 13140
+Con p = 5:
+    Con r = 0:
+        Fuerza Bruta: 382953.33
+        Escalera64 (Base): 333.33
+        Escalera64 (Guardar caminos): 18611181
+        Escalera64 (Menor camino): 13200
