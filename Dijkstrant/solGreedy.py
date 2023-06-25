@@ -113,13 +113,18 @@ def draw_graph(graph, bfs_cost):
     
     
 def costoMinimo(directed_graph, graph, directed_edges):
+    #Sea X = S y A = Z del ejemplo
     minCost = 249832784
     besti = 0
     bestj = 0
     
     caminoMasCorto = (minCost, besti, bestj )
     
+    # Ejecutar Dijkstra y obtener el diccionario de distancias
     distances = dijkstra(directed_graph, 'X')
+    
+    # Ejecutar BFS y obtener el diccionario de costos
+    bfs_cost = bfs(graph, 'A', get_edge_weight)
     
     
     
@@ -147,11 +152,7 @@ def main():
     # Agregar el nodo 'V'
     directed_graph.add_edge('V', 'X', weight=2)
 
-    '''# Ejecutar Dijkstra y obtener el diccionario de distancias
-    distances = dijkstra(directed_graph, 'X')
-    
-    # Ejecutar BFS y obtener el diccionario de costos
-    bfs_cost = bfs(graph, 'A', get_edge_weight)
+    '''
 
     # Dibujar grafo con los costos
     draw_graph(graph, bfs_cost)
