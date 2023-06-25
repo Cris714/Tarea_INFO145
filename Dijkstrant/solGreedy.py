@@ -116,8 +116,14 @@ def costoMinimo(directed_graph, graph, directed_edges):
     minCost = 249832784
     besti = 0
     bestj = 0
-
+    
     caminoMasCorto = (minCost, besti, bestj )
+    
+    distances = dijkstra(directed_graph, 'X')
+    
+    
+    
+    
     return (caminoMasCorto)
 
 
