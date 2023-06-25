@@ -132,7 +132,7 @@ def main():
     # Agregar el nodo 'V'
     directed_graph.add_edge('V', 'X', weight=2)
 
-    # Ejecutar Dijkstra y obtener el diccionario de distancias
+    '''# Ejecutar Dijkstra y obtener el diccionario de distancias
     distances = dijkstra(directed_graph, 'X')
 
     # Dibujar grafo dirigido con las distancias
@@ -146,7 +146,7 @@ def main():
     nx.draw_networkx_edge_labels(directed_graph, pos, edge_labels=edge_labels)
     nx.draw_networkx_labels(directed_graph, pos, labels=node_labels, font_color='red', verticalalignment='bottom')
 
-    plt.show()
+    plt.show()'''
 
 if __name__ == "__main__":
     main()
