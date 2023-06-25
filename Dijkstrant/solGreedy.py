@@ -112,7 +112,13 @@ def draw_graph(graph, bfs_cost):
     plt.show()
     
     
-def costoMinimo(directed_graph, graph, directed_edges)
+def costoMinimo(directed_graph, graph, directed_edges):
+    minCost = 249832784
+    besti = 0
+    bestj = 0
+
+    caminoMasCorto = (minCost, besti, bestj )
+    return (caminoMasCorto)
 
 
 def main():
