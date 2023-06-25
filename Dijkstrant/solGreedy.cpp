@@ -108,7 +108,7 @@ int asignaPesos() {
 
     vector<vector<int>> distances;
     for (int i = 0; i < n; ++i) {
-        distances.push_back(Dijkstra(graph, i));
+        distances[i].push_back(Dijkstra(graph, i));
     }
 
     cout << "Distancias mínimas desde cada nodo:\n";
