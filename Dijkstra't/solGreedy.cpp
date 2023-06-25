@@ -254,7 +254,7 @@ int main(int argc, char** argv) {
         for (auto& [islas1, islas2, costoi] : costosIslas) {
             Islas.add_edge(islas1, islas2, costoi);
         }
-        Puertosh = { 'C', 'D','A','B' };
+        Puertosh = { 'C', 'D'};
         Islash = { '1', '2', '3' };
         costoBarco = { make_tuple('C', '1', -4), make_tuple('C', '2', 9), make_tuple('C', '3', 7), make_tuple('D', '1', 12), make_tuple('D', '2', -3), make_tuple('D', '3', 21) };
         Pi = 'S';
@@ -271,8 +271,8 @@ int main(int argc, char** argv) {
         Puertos = createdPuertos;
         Pi = createdPi;
         Islas = createdIslas;
-        createdIi = Ii;
-        createdcostoBarco = costoBarco;
+        Ii = createdI;
+        costoBarco = createdcostoBarco;
     }
     auto [min_cost, besti, bestj] = puertosIslas(Puertos, Pi , Islas, Ii, costoBarco, Puertosh, Islash);
     //Se imprimen los resultados: el costo minimo de capital a capital, y cuales son el puerto y la isla que se uso 
