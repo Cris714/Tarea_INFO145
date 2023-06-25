@@ -1,4 +1,3 @@
-
 import networkx as nx
 import matplotlib.pyplot as plt
 import heapq
@@ -124,13 +123,6 @@ def main():
     print("Best i:", besti)
     print("Best j:", bestj)
     return 0
-
-
-
-
-
-
-
 
 
 main()
