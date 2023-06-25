@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import heapq
+from collections import deque
 
 #Definimos la clase Graph y Dgraph
 class Graph:
@@ -134,6 +135,12 @@ def main():
 
     '''# Ejecutar Dijkstra y obtener el diccionario de distancias
     distances = dijkstra(directed_graph, 'X')
+    
+    # Ejecutar BFS y obtener el diccionario de costos
+    bfs_cost = bfs(graph, 'A', get_edge_weight)
+
+    # Dibujar grafo con los costos
+    draw_graph(graph, bfs_cost)
 
     # Dibujar grafo dirigido con las distancias
     draw_dgraph(directed_graph, distances)
