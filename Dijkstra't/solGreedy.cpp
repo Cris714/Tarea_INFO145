@@ -254,7 +254,7 @@ int main(int argc, char** argv) {
         for (auto& [islas1, islas2, costoi] : costosIslas) {
             Islas.add_edge(islas1, islas2, costoi);
         }
-        Puertosh = { 'C', 'D' };
+        Puertosh = { 'C', 'D','A','B' };
         Islash = { '1', '2', '3' };
         costoBarco = { make_tuple('C', '1', -4), make_tuple('C', '2', 9), make_tuple('C', '3', 7), make_tuple('D', '1', 12), make_tuple('D', '2', -3), make_tuple('D', '3', 21) };
         Pi = 'S';
