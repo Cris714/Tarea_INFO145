@@ -39,10 +39,19 @@ Escalon* escalera64(unsigned long long* S, Escalon* E, int n, int k) {
 int main() {
     
     srand(time(nullptr));
-    
+
     // Parametros de entrada
     int p = 2;
     int largoEscalera = 20;
+    int d = 3;
+
+    cout << "Largo de la escalera (n): ";
+    cin >> largoEscalera;
+    cout << "Potencia saltos (p): ";
+    cin >> p;
+    cout << "Escalones rotos totales (r):";
+    cin >> d;
+
     
     // Creacion de vector con escalones
     Escalon* E = new Escalon[largoEscalera]; //n
@@ -53,9 +62,9 @@ int main() {
     }
     
     // Destruidos
-    int d = 3; // Cuantos eslabones random destruidos
+     // Cuantos eslabones random destruidos
     int r = 0;
-    for (int i=0;i<d;i++) {
+    for (int i=0; i<d; i++) {
         do {
             r=rand()%largoEscalera;
         } while (E[r].value == INF);
@@ -79,7 +88,7 @@ int main() {
     printf("}\nSoluciones posibles: ");
     auto inicio = chrono::high_resolution_clock::now();
     escalera64(S, E, largoEscalera, k);
-    auto final = chrono::high_resolution_clock::now();;
+    auto final = chrono::high_resolution_clock::now();
     
     // Escribir los Resultados
     printf("%llu",(E[largoEscalera-1].value == INF ? 0 : E[largoEscalera-1].value));
@@ -99,7 +108,7 @@ int main() {
     printf("]\n");
     
     auto duration = chrono::duration_cast<chrono::nanoseconds>(final-inicio);
-    printf("Tiempo de ejecucion: %f", duration.count()*pow(10,-9));
+    cout << "Tiempo de ejecucion en nanosegundos: " <<  duration.count() << endl;
     
     
     delete[] E;

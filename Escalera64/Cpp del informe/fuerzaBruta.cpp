@@ -1,24 +1,25 @@
 #include <iostream>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
-void fuerza_bruta(vector<bool> &E, vector<int> &X, vector<int> S, const int c);
-long long fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c);
-long long escalera64(vector<long long> &D, vector<bool> &E, const int n, vector<int> &X, const int c);
-template <typename S> void print_vector(vector<S> &vec);
+void fuerza_bruta(vector<bool>& E, vector<int>& X, vector<int> S, const int c);
+long long fuerza_bruta_cont(vector<bool>& E, const int n, const vector<int>& X, const int c);
+void escalera64(vector<long long>& D, vector<bool>& E, const int n, const vector<int>& X, const int c);
+template <typename S> void print_vector(const vector<S>& vec);
 
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
     int n, r, p;
 
-    if (argc != 4){ // valores por defecto para prueba
+    if (argc != 4) { // valores por defecto para prueba
         cout << "Usando valores por defecto para validación..." << endl;
         cout << "Para definir parámetros ejecutar como: ./prog n r p" << endl;
         n = 10;
         r = 3;
         p = 2;
     }
-    else{ // asigna elementos si se pasaron argumentos en el programa
+    else { // asigna elementos si se pasaron argumentos en el programa
         n = atoi(argv[1]);
         r = atoi(argv[2]);
         p = atoi(argv[3]);
@@ -29,9 +30,9 @@ int main(int argc, char** argv){
     vector<int> S, X; // vectores auxiliares: S <- traza de solucion | X <- saltos posibles
 
     // inicialización de E para ejecución con argumentos
-    if (argc == 4){
-        for (int i = 0; i < r; i++){
-            while (!E[index=rand()%(n-2)]);
+    if (argc == 4) {
+        for (int i = 0; i < r; i++) {
+            while (!E[index = rand() % (n - 2)]);
             E[index] = false;
         }
     }
@@ -40,61 +41,45 @@ int main(int argc, char** argv){
 
     // inicialización de X
     do X.push_back(jmp);
-    while((jmp*=p) <= n);
+    while ((jmp *= p) <= n);
 
     // if (n < 10) fuerza_bruta(E, X, S, 0);
-    // cout << "N° Soluciones: " << fuerza_bruta_cont(E, n, X, 0) << endl;
+    long long soluciones = fuerza_bruta_cont(E, n, X, 0);
+    cout << "N° Soluciones: " << soluciones << endl;
 
-    // Usando PD
-    vector<long long> D(n, INT64_MIN);
-    cout << "N° Soluciones: " << escalera64(D, E, n, X, 0) << endl;
+    // Usando fuerza_bruta_cont
+    auto inicio = chrono::high_resolution_clock::now();
+    fuerza_bruta_cont(E, n, X, 0);
+    auto final = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(final - inicio);
+    cout << "Tiempo transcurrido: " << duration.count() << endl;
 
     return EXIT_SUCCESS;
 }
 
-void fuerza_bruta(vector<bool> &E, vector<int> &X, vector<int> S, const int c){
-    for (int x: X){
-        if (c + x < E.size() && E[c + x - 1]){
-            S.push_back(c + x);
-            fuerza_bruta(E, X, S, c + x);
-            S.pop_back();
-        }
-        else if (c + x == E.size()){
-            S.push_back(c + x);
-            print_vector(S);
-            S.pop_back();
-        }
-    }
+void fuerza_bruta(vector<bool>& E, vector<int>& X, vector<int> S, const int c) {
+    // No se implementa en este caso
 }
 
-long long fuerza_bruta_cont(vector<bool> &E, const int n, vector<int> &X, const int c){
+long long fuerza_bruta_cont(vector<bool>& E, const int n, const vector<int>& X, const int c) {
     long long ac = 0;
-    for (int x: X){
+    for (int x : X) {
         if (c + x < n && E[c + x - 1])
             ac += fuerza_bruta_cont(E, n, X, c + x);
-        
+
         else if (c + x == n)
             return ++ac;
     }
     return ac;
 }
 
-long long escalera64(vector<long long> &D, vector<bool> &E, const int n, vector<int> &X, const int c){
-    if (D[c] > INT64_MIN)
-        return D[c];
-
-    long long ac = 0;
-    for (int x: X){
-        if (c + x < n && E[c + x - 1])
-            D[c] = (ac+=escalera64(D, E, n, X, c + x));
-        
-        else if (c + x == n)
-            return D[c]=++ac;
-    }
-    return ac;
+void escalera64(vector<long long>& D, vector<bool>& E, const int n, const vector<int>& X, const int c) {
+    // No se implementa en este caso
 }
 
-template <typename S> void print_vector(vector<S> &vec){
-    for (S n: vec) cout << n << " ";
+template <typename S>
+void print_vector(const vector<S>& vec) {
+    for (S n : vec)
+        cout << n << " ";
     cout << endl;
 }

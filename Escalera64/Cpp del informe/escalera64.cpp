@@ -3,6 +3,8 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
+#include <algorithm>
 
 using namespace std;
 
@@ -15,7 +17,7 @@ int escalera64(vector<int>& S, vector<int>& E, vector<int>& D) {
         E[d-1] = -1;
     }
 
-    for (int i = 0; i < E.size(); i++) {
+    for (int i = 0; i < (int)E.size(); i++) {
         if (E[i] != -1) {
             for (int s : S) {
                 if (i - s >= 0 && E[i - s] != -1) {
@@ -29,12 +31,31 @@ int escalera64(vector<int>& S, vector<int>& E, vector<int>& D) {
 }
 
 int main() {
+
     srand(time(nullptr));
 
     int largoEscalera = 20;
-    vector<int> E(largoEscalera, 0);
     vector<int> D;
     int p = 2;
+    int d;
+
+    cout << "Largo de la escalera (n): ";
+    cin >> largoEscalera;
+    vector<int> E(largoEscalera, 0);
+    cout << "Potencia saltos (p): ";
+    cin >> p;
+    cout << "Escalones rotos totales (r):";
+    cin >> d;
+
+    for (int i = 0; i < d; i++) {
+        int e = rand() % (largoEscalera) + 1;
+        while (std::find(D.begin(), D.end(), e) != D.end()) {
+            e = rand() % (largoEscalera) + 1;
+        }
+        D.push_back(e);
+    }
+
+
     vector<int> S;
     for (int i = 0; i <= log2(E.size()) / log2(p); i++) {
         S.push_back(pow(p, i));
@@ -52,7 +73,13 @@ int main() {
     for (int s : S) {
         cout << s << " ";
     }
-    cout << "\nSalida: " << escalera64(S, E, D) << endl;
+
+    auto inicio = chrono::high_resolution_clock::now();
+    auto e = escalera64(S, E, D);
+    auto final = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(final-inicio);
+    cout << "\nSalida: " << e << "\nTiempo transcurrido en nanosegundos: " << duration.count() << endl;
+
 
     return 0;
 }
