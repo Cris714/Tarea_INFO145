@@ -38,8 +38,6 @@ Escalon* escalera64(unsigned long long* S, Escalon* E, int n, int k) {
 
 int main() {
     
-    srand(time(nullptr));
-
     // Parametros de entrada
     int p = 2;
     int largoEscalera = 20;
@@ -51,6 +49,10 @@ int main() {
     cin >> p;
     cout << "Escalones rotos totales (r):";
     cin >> d;
+    int seed;
+    cout << "Ingrese una semilla para la generacion aleatoria: ";
+    cin >> seed;
+    srand(seed);
 
     
     // Creacion de vector con escalones

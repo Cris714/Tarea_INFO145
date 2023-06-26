@@ -32,7 +32,7 @@ int escalera64(vector<int>& S, vector<int>& E, vector<int>& D) {
 
 int main() {
 
-    srand(time(nullptr));
+   
 
     int largoEscalera = 20;
     vector<int> D;
@@ -46,6 +46,10 @@ int main() {
     cin >> p;
     cout << "Escalones rotos totales (r):";
     cin >> d;
+    int seed;
+    cout << "Ingrese una semilla para la generacion aleatoria: ";
+    cin >> seed;
+    srand(seed);
 
     for (int i = 0; i < d; i++) {
         int e = rand() % (largoEscalera) + 1;

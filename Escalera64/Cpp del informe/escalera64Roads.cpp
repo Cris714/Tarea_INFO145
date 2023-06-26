@@ -49,6 +49,11 @@ int main() {
     cin >> p;
     cout << "Escalones rotos totales (r):";
     cin >> d;
+    int seed;
+    cout << "Ingrese una semilla para la generacion aleatoria: ";
+    cin >> seed;
+    srand(seed);
+    
     for (int i = 0; i < d; i++) {
         int e = rand() % (largoEscalera) + 1;
         while (D.find(e) != D.end()) {

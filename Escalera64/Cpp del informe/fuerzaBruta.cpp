@@ -10,20 +10,23 @@ void escalera64(vector<long long>& D, vector<bool>& E, const int n, const vector
 template <typename S> void print_vector(const vector<S>& vec);
 
 int main(int argc, char** argv) {
-    int n, r, p;
+    int n, r, p, s;
 
-    if (argc != 4) { // valores por defecto para prueba
+    if (argc != 5) { // valores por defecto para prueba
         cout << "Usando valores por defecto para validación..." << endl;
-        cout << "Para definir parámetros ejecutar como: ./prog n r p" << endl;
+        cout << "Para definir parámetros ejecutar como: ./prog n r p seed" << endl;
         n = 10;
         r = 3;
         p = 2;
+        s = time(NULL);
     }
     else { // asigna elementos si se pasaron argumentos en el programa
         n = atoi(argv[1]);
         r = atoi(argv[2]);
         p = atoi(argv[3]);
+        s = atoi(argv[4]);
     }
+    srand(s);
 
     int index, jmp = 1;
     vector<bool> E(n, true); // vector que representa la escalera
@@ -55,10 +58,6 @@ int main(int argc, char** argv) {
     cout << "Tiempo transcurrido: " << duration.count() << endl;
 
     return EXIT_SUCCESS;
-}
-
-void fuerza_bruta(vector<bool>& E, vector<int>& X, vector<int> S, const int c) {
-    // No se implementa en este caso
 }
 
 long long fuerza_bruta_cont(vector<bool>& E, const int n, const vector<int>& X, const int c) {
