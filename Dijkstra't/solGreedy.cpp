@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <unordered_set>
 #include <cmath>
+#include <chrono>
 using namespace std;
 //Se crea la clase GrafoD para  los grafos dirigidos que se usan en los puertos
 class GrafoD {
@@ -36,6 +37,67 @@ unordered_map<char, int> dijkstra(GrafoD& graph, char source);
 tuple<int, int, int> puertosIslas(GrafoD& Puertos, char s, Grafo& Islas, char z, vector<tuple<char, char, int>>& costoBarco, vector<char>& Puertosh, vector<char>& Islash);
 bool estaEnVector(vector<char> vector, char elemento);
 tuple<GrafoD, char, Grafo, char, vector<tuple<char, char, int>>, vector<char>, vector<char>> creaGrafo(int n, int k, int m, int logm);
+
+
+int main(int argc, char** argv) {
+    //Se inicializan las variables
+    GrafoD Puertos;         //Grafo dirigido con los puertos
+    Grafo Islas;            //Grafo no dirigido con las islas
+    char Pi;                //Capital continental del Pais
+    char Ii;                //Capital continental del archipielago
+    vector<tuple<char, char, int>> costoBarco; //Costos de ir de los puertos a las islas
+    vector<char> Puertosh;  //Puertos habilitados para viajar en barco
+    vector<char> Islash;    //islas habilitadas para viajar en barco
+    bool ar = true;
+    int n, k, m,logm; //n = num ciudades, m = num islas, k = num ciudades con puertos.
+    if(argc != 4)
+	{
+		cout << "Usando valores por defecto para validación..." << endl;
+        cout << "Para definir parámetros ejecutar como: ./prog n k m" << endl;
+    }
+    else{
+        ar = false;
+    }
+    if(ar){//Se asignan los valores del informe
+        vector<tuple<char, char, int>> costosPuertos = { make_tuple('S', 'A', 2), make_tuple('S', 'D', 8), make_tuple('A', 'S', 3), make_tuple('A', 'B', 1), make_tuple('A', 'D', 3), make_tuple('B', 'S', 4), make_tuple('B', 'C', 6), make_tuple('C', 'B', 5), make_tuple('C', 'D', 9), make_tuple('D', 'B', 2), make_tuple('D', 'C', 2) };
+
+        for (auto& [puerto1, puerto2, costop] : costosPuertos) {
+            Puertos.add_edge(puerto1, puerto2, costop);
+        }
+        vector<tuple<char, char, int>> costosIslas = { make_tuple('1', '4', 2), make_tuple('1', '2', 1), make_tuple('2', '4', 3), make_tuple('Z', '2', 12), make_tuple('Z', '5', 2), make_tuple('Z', '3', 5), make_tuple('Z', '6', 2), make_tuple('Z', '8', 3), make_tuple('2', '3', 5), make_tuple('4', '5', 1), make_tuple('4', '6', 4), make_tuple('6', '7', 3), make_tuple('7', '8', 7), make_tuple('3', '7', 4) };
+
+        for (auto& [islas1, islas2, costoi] : costosIslas) {
+            Islas.add_edge(islas1, islas2, costoi);
+        }
+        Puertosh = { 'C', 'D'};
+        Islash = { '1', '2', '3' };
+        costoBarco = { make_tuple('C', '1', -4), make_tuple('C', '2', 9), make_tuple('C', '3', 7), make_tuple('D', '1', 12), make_tuple('D', '2', -3), make_tuple('D', '3', 21) };
+        Pi = 'S';
+        Ii = '1';
+    }
+    else{//Aqui se ocupan los valores del argumento y se llama a la funcion creaGrafo() para crear valores al azar
+        n = atoi(argv[1]);
+        k = atoi(argv[2]);
+        m = atoi(argv[3]);
+        logm = log2(m);
+        auto [createdPuertos, createdPi, createdIslas, createdIi, createdcostoBarco, createdPuertosh, createdIslash] = creaGrafo(n, k, m, logm);
+        Puertosh = createdPuertosh;
+        Islash = createdIslash;
+        Puertos = createdPuertos;
+        Pi = createdPi;
+        Islas = createdIslas;
+        Ii = createdIi;
+        costoBarco = createdcostoBarco;
+    }
+    
+    auto [min_cost, besti, bestj] = puertosIslas(Puertos, Pi , Islas, Ii, costoBarco, Puertosh, Islash);
+    //Se imprimen los resultados: el costo minimo de capital a capital, y cuales son el puerto y la isla que se uso 
+    cout << "Costo Mínimo: " << min_cost << endl;
+    cout << "Mejor puerto habilitado: " << besti << endl;
+    cout << "Mejor isla habilitada: " << bestj << endl;
+
+    return 0;
+}
 
 //Funcion Breadth-First Search modificada para que funcione con los pesos de las aristas del grafo, en lugar de la cantidad de nodos en las islas
 unordered_map<char, int> bfs(Grafo& graph, char source) {
@@ -207,7 +269,7 @@ tuple<GrafoD, char, Grafo, char, vector<tuple<char, char, int>>, vector<char>, v
 
     cont= 0;
     while(cont <logm) {
-        int random_num = rand() % n;
+        int random_num = rand() % m;
         if(islas_symbols[random_num]!=Pi && !estaEnVector(Islash,islas_symbols[random_num])){
             Islash.push_back(char(islas_symbols[random_num]));
             cont++;
@@ -223,62 +285,4 @@ tuple<GrafoD, char, Grafo, char, vector<tuple<char, char, int>>, vector<char>, v
         }
     }
     return make_tuple(Puertos, Pi, Islas, Ii, costoBarco, Puertosh, Islash);
-}
-
-int main(int argc, char** argv) {
-    GrafoD Puertos;
-    Grafo Islas;
-    char Pi;
-    char Ii;
-    vector<tuple<char, char, int>> costoBarco;
-    vector<char> Puertosh;
-    vector<char> Islash;
-    bool ar = true;
-    int n, k, m,logm; //n = num ciudades, m = num islas, k = num ciudades con puertos.
-    if(argc != 4)
-	{
-		cout << "Usando valores por defecto para validación..." << endl;
-        cout << "Para definir parámetros ejecutar como: ./prog n k m" << endl;
-    }
-    else{
-        ar = false;
-    }
-    if(ar){//Se asignan los valores del informe
-        vector<tuple<char, char, int>> costosPuertos = { make_tuple('S', 'A', 2), make_tuple('S', 'D', 8), make_tuple('A', 'S', 3), make_tuple('A', 'B', 1), make_tuple('A', 'D', 3), make_tuple('B', 'S', 4), make_tuple('B', 'C', 6), make_tuple('C', 'B', 5), make_tuple('C', 'D', 9), make_tuple('D', 'B', 2), make_tuple('D', 'C', 2) };
-
-        for (auto& [puerto1, puerto2, costop] : costosPuertos) {
-            Puertos.add_edge(puerto1, puerto2, costop);
-        }
-        vector<tuple<char, char, int>> costosIslas = { make_tuple('1', '4', 2), make_tuple('1', '2', 1), make_tuple('2', '4', 3), make_tuple('Z', '2', 12), make_tuple('Z', '5', 2), make_tuple('Z', '3', 5), make_tuple('Z', '6', 2), make_tuple('Z', '8', 3), make_tuple('2', '3', 5), make_tuple('4', '5', 1), make_tuple('4', '6', 4), make_tuple('6', '7', 3), make_tuple('7', '8', 7), make_tuple('3', '7', 4) };
-
-        for (auto& [islas1, islas2, costoi] : costosIslas) {
-            Islas.add_edge(islas1, islas2, costoi);
-        }
-        Puertosh = { 'C', 'D'};
-        Islash = { '1', '2', '3' };
-        costoBarco = { make_tuple('C', '1', -4), make_tuple('C', '2', 9), make_tuple('C', '3', 7), make_tuple('D', '1', 12), make_tuple('D', '2', -3), make_tuple('D', '3', 21) };
-        Pi = 'S';
-        Ii = '1';
-    }
-    else{//Aqui se ocupan los valores del argumento y se llama a la funcion creaGrafo() para crear valores al azar
-        n = atoi(argv[1]);
-        k = atoi(argv[2]);
-        m = atoi(argv[3]);
-        logm = log2(m);
-        auto [createdPuertos, createdPi, createdIslas, createdIi, createdcostoBarco, createdPuertosh, createdIslash] = creaGrafo(n, k, m, logm);
-        Puertosh = createdPuertosh;
-        Islash = createdIslash;
-        Puertos = createdPuertos;
-        Pi = createdPi;
-        Islas = createdIslas;
-        Ii = createdI;
-        costoBarco = createdcostoBarco;
-    }
-    auto [min_cost, besti, bestj] = puertosIslas(Puertos, Pi , Islas, Ii, costoBarco, Puertosh, Islash);
-    //Se imprimen los resultados: el costo minimo de capital a capital, y cuales son el puerto y la isla que se uso 
-    cout << "Costo Mínimo: " << min_cost << endl;
-    cout << "Mejor puerto habilitado: " << besti << endl;
-    cout << "Mejor isla habilitada: " << bestj << endl;
-
-    return 0;
 }
