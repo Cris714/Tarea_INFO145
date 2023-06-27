@@ -60,7 +60,6 @@ int main(int argc, char** argv) {
         ar = false;
     }
     if(ar){//Se asignan los valores del informe
-        srand(atoi(argv[4]));
 
         vector<tuple<char, char, int>> costosPuertos = {
             make_tuple('A', 'C', 25),
