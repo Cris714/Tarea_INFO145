@@ -67,10 +67,6 @@ for transicion in transiciones:
 for nodo_a, nodo_b, _ in transiciones:
     if grafo_letras.has_edge(nodo_b, nodo_a):
         print(f"Transición opuesta (LETRA - LETRA): {nodo_b} -> {nodo_a} (Costo: {grafo_letras[nodo_b][nodo_a]['weight']})")
-    if grafo_medio.has_edge(nodo_b, nodo_a):
-        print(f"Transición opuesta (LETRA - NUMERO): {nodo_b} -> {nodo_a} (Costo: {grafo_medio[nodo_b][nodo_a]['weight']})")
-    if grafo_numeros.has_edge(nodo_b, nodo_a):
-        print(f"Transición opuesta (NUMERO - NUMERO):{nodo_b} -> {nodo_a} (Costo: {grafo_numeros[nodo_b][nodo_a]['weight']})")
 
 # Algoritmo de posicionamiento Fruchterman-Reingold
 pos_letras = nx.spring_layout(grafo_letras, seed=42, k=100)
