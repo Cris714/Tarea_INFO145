@@ -1,10 +1,10 @@
 CC=g++
 CFLAGS=-Wall -O3
-BINS=solGreedy
+BINS=solGreedyAleatorio
 all: clean problema
 
 problema:
-	$(CC) $(CFLAGS) -o $(BINS) solGreedy.cpp
+	$(CC) $(CFLAGS) -o $(BINS) solGreedyAleatorio.cpp
 
 clean:
 	@echo " [CLN] Removing binary files"
