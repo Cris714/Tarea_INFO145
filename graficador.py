@@ -8,45 +8,45 @@ grafo_numeros = nx.Graph()
 
 # Definir las transiciones
 transiciones = [
-    ('A', 'C', 25),
-    ('A', 'E', 10),
-    ('A', 'G', 3),
-    ('B', 'A', 25),
-    ('B', 'C', 1),
-    ('B', 'E', 25),
-    ('C', 'B', 4),
-    ('C', 'D', 10),
-    ('C', 'F', 5),
-    ('C', 'G', 6),
-    ('D', 'A', 1),
-    ('D', 'B', 27),
-    ('D', 'C', 3),
-    ('D', 'E', 21),
-    ('D', 'F', 16),
-    ('E', 'B', 26),
-    ('E', 'C', 23),
-    ('E', 'G', 7),
-    ('F', 'A', 2),
-    ('F', 'B', 1),
-    ('F', 'D', 10),
-    ('F', 'E', 15),
-    ('G', 'B', 6),
-    ('G', 'D', 3),
-    ('G', 'E', 14),
-    ('0', '1', 5),
-    ('0', '2', 21),
-    ('0', '3', 14),
-    ('0', '4', 16),
-    ('1', '2', 21),
-    ('2', '3', 28),
-    ('2', '4', 24),
-    ('2', '6', 16),
-    ('3', '5', 15),
-    ('3', '6', 16),
-    ('D', '3', 9),
-    ('D', '6', 5),
-    ('C', '3', 15),
-    ('C', '6', 17)
+('A', 'C', 25),
+('A', 'E', 10),
+('A', 'G', 3),
+('B', 'A', 25),
+('B', 'C', 1),
+('B', 'E', 25),
+('C', 'B', 4),
+('C', 'D', 10),
+('C', 'F', 5),
+('C', 'G', 6),
+('D', 'A', 1),
+('D', 'B', 27),
+('D', 'C', 3),
+('D', 'E', 21),
+('D', 'F', 16),
+('E', 'B', 26),
+('E', 'C', 23),
+('E', 'G', 7),
+('F', 'A', 2),
+('F', 'B', 1),
+('F', 'D', 10),
+('F', 'E', 15),
+('G', 'B', 6),
+('G', 'D', 3),
+('G', 'E', 14),
+('0', '1', 5),
+('0', '2', 21),
+('0', '3', 14),
+('0', '4', 16),
+('1', '2', 21),
+('2', '3', 28),
+('2', '4', 24),
+('2', '6', 16),
+('3', '5', 15),
+('3', '6', 16),
+('D', '3', 9),
+('D', '6', 5),
+('C', '3', 15),
+('C', '6', 17)
 ]
 
 # Construir los grafos
@@ -66,16 +66,16 @@ for transicion in transiciones:
 
 for nodo_a, nodo_b, _ in transiciones:
     if grafo_letras.has_edge(nodo_b, nodo_a):
-        print(f"Transición opuesta (LETRA - LETRA): {nodo_a} -> {nodo_b} (Costo: {costo}) y {nodo_b} -> {nodo_a} (Costo: {grafo_letras[nodo_b][nodo_a]['weight']})")
+        print(f"Transición opuesta (LETRA - LETRA): {nodo_b} -> {nodo_a} (Costo: {grafo_letras[nodo_b][nodo_a]['weight']})")
     if grafo_medio.has_edge(nodo_b, nodo_a):
-        print(f"Transición opuesta (LETRA - NUMERO): {nodo_a} -> {nodo_b} (Costo: {costo}) y {nodo_b} -> {nodo_a} (Costo: {grafo_medio[nodo_b][nodo_a]['weight']})")
+        print(f"Transición opuesta (LETRA - NUMERO): {nodo_b} -> {nodo_a} (Costo: {grafo_medio[nodo_b][nodo_a]['weight']})")
     if grafo_numeros.has_edge(nodo_b, nodo_a):
-        print(f"Transición opuesta (NUMERO - NUMERO): {nodo_a} -> {nodo_b} (Costo: {costo}) y {nodo_b} -> {nodo_a} (Costo: {grafo_numeros[nodo_b][nodo_a]['weight']})")
+        print(f"Transición opuesta (NUMERO - NUMERO):{nodo_b} -> {nodo_a} (Costo: {grafo_numeros[nodo_b][nodo_a]['weight']})")
 
 # Algoritmo de posicionamiento Fruchterman-Reingold
-pos_letras = nx.spring_layout(grafo_letras, seed=42)
-pos_medio = nx.spring_layout(grafo_medio, seed=42)
-pos_numeros = nx.spring_layout(grafo_numeros, seed=42)
+pos_letras = nx.spring_layout(grafo_letras, seed=42, k=100)
+pos_medio = nx.spring_layout(grafo_medio, seed=42, k=100)
+pos_numeros = nx.spring_layout(grafo_numeros, seed=42, k=100)
 
 # Pedir al usuario el nodo inicial y final
 nodo_inicial = input("Ingrese el nodo inicial: ")

@@ -65,7 +65,7 @@ mc_grid = griddata((n_values, p_values), mc_values, (n_grid, p_grid), method='li
 # Crear el plano del gráfico 3D
 ax.plot_surface(n_grid, p_grid, fb_grid, alpha=1, cmap='Blues')
 ax.plot_surface(n_grid, p_grid, eb_grid, alpha=1, cmap='Reds')
-ax.plot_surface(n_grid, p_grid, gc_grid, alpha=0.6, cmap='Greens')
+ax.plot_surface(n_grid, p_grid, gc_grid, alpha=0.8, cmap='Greens')
 ax.plot_surface(n_grid, p_grid, mc_grid, alpha=1, cmap='Oranges')
 
 # Scatter plot para los puntos de datos
