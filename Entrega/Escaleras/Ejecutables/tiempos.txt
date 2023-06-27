@@ -1,0 +1,178 @@
+Con n = 5:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta (cant): 200, 160, 350
+            Escalera64 (Base): 160, 150, 140
+            Escalera64 (Guardar caminos): 10900, 10440, 9340
+            Escalera64 (Menor camino): 5350,  5040, 5119
+        Con r = 1:
+            Fuerza Bruta (cant): 130, 110, 110
+            Escalera64 (Base): 160, 250, 190
+            Escalera64 (Guardar caminos): 5890, 5300, 5940
+            Escalera64 (Menor camino): 5470,  4030, 4340
+        Con r = 2:
+            Fuerza Bruta (cant): 80, 80, 90
+            Escalera64 (Base): 170, 160, 170 
+            Escalera64 (Guardar caminos): 4740, 4560, 4599
+            Escalera64 (Menor camino): 4350, 4530, 4320
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta (cant): 150, 140, 140
+            Escalera64 (Base): 120, 140, 120
+            Escalera64 (Guardar caminos): 7000, 6110, 6679
+            Escalera64 (Menor camino): 4050, 4410, 3760
+        Con r = 1:
+            Fuerza Bruta (cant): 110, 120, 130
+            Escalera64 (Base): 110, 170, 130
+            Escalera64 (Guardar caminos): 4480, 4350, 4330
+            Escalera64 (Menor camino): 3500, 3599, 4000
+        Con r = 2:
+            Fuerza Bruta (cant): 120, 120, 100
+            Escalera64 (Base): 130, 120, 160
+            Escalera64 (Guardar caminos): 4450, 4500, 4200
+            Escalera64 (Menor camino):  160(sx), 3830, 4010
+
+Con n = 10:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta (cant): 830, 760, 770
+            Escalera64 (Base): 230, 250, 240
+            Escalera64 (Guardar caminos): 60409, 48040, 49640
+            Escalera64 (Menor camino): 5350, 5600, 5690
+        Con r = 2:
+            Fuerza Bruta (cant): 580, 570, 560
+            Escalera64 (Base): 360, 300, 340
+            Escalera64 (Guardar caminos): 17080, 14500, 14739
+            Escalera64 (Menor camino): 4920, 4880, 4550
+        Con r = 4:
+            Fuerza Bruta: 150, 140, 140
+            Escalera64 (Base): 310, 270, 280
+            Escalera64 (Guardar caminos): 13760, 11340, 15380
+            Escalera64 (Menor camino): 3860, 4450, 4940
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 400, 390, 390
+            Escalera64 (Base): 170, 170, 220
+            Escalera64 (Guardar caminos): 20020, 19970, 20160
+            Escalera64 (Menor camino): 4870 , 4800, 4470
+        Con r = 2:
+            Fuerza Bruta: 340, 340, 300
+            Escalera64 (Base): 270, 290, 260
+            Escalera64 (Guardar caminos): 9750, 10689, 9750
+            Escalera64 (Menor camino): 1050, 4140, 4060
+        Con r = 4:
+            Fuerza Bruta: 160, 130, 130
+            Escalera64 (Base): 250, 240, 240
+            Escalera64 (Guardar caminos): 5660, 5410, 5210
+            Escalera64 (Menor camino):  3910,  4150, 4930
+
+Con n = 20:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta: 171659, 171249, 164609
+            Escalera64 (Base): 300, 310, 300
+            Escalera64 (Guardar caminos): 19944531, 12888230, 12832692
+            Escalera64 (Menor camino):  8650, 7210, 7499
+        Con r = 3:
+            Fuerza Bruta: 15100, 14900, 14330
+            Escalera64 (Base): 440, 600, 520
+            Escalera64 (Guardar caminos): 752213, 697534, 787414
+            Escalera64 (Menor camino): 7499, 6860, 6760
+        Con r = 9:
+            Fuerza Bruta: 580, 650, 680
+            Escalera64 (Base): 460, 370, 420
+            Escalera64 (Guardar caminos): 19390, 16630, 16980
+            Escalera64 (Menor camino): 6590, 5480, 5010
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 9000, 9030, 8990
+            Escalera64 (Base): 240, 220, 300
+            Escalera64 (Guardar caminos): 840012, 479556, 591905
+            Escalera64 (Menor camino): 6080, 6480, 6240
+        Con r = 3:
+            Fuerza Bruta: 1820, 1750, 1860
+            Escalera64 (Base): 320, 370, 350
+            Escalera64 (Guardar caminos): 82799, 73640, 73179
+            Escalera64 (Menor camino): 6330, 7170, 6270 
+        Con r = 9:
+            Fuerza Bruta: 230, 220, 260
+            Escalera64 (Base): 420, 360, 450
+            Escalera64 (Guardar caminos): 9620, 8480, 8250
+            Escalera64 (Menor camino): 6490, 4880, 5500
+    Con p = 4:
+        Con r = 0:
+            Fuerza Bruta: 3050, 3100, 3060
+            Escalera64 (Base): 280, 220, 290
+            Escalera64 (Guardar caminos): 142249, 181448, 145299
+            Escalera64 (Menor camino): 6360, 6640, 5890 
+        Con r = 3:
+            Fuerza Bruta: 930, 640, 590
+            Escalera64 (Base): 320, 420, 360
+            Escalera64 (Guardar caminos): 20019, 24039, 23250
+            Escalera64 (Menor camino): 6010, 5110, 51060
+        Con r = 9:
+            Fuerza Bruta: 170, 170, 150
+            Escalera64 (Base): 380, 380, 320
+            Escalera64 (Guardar caminos): 9360, 9520, 8910
+            Escalera64 (Menor camino): 4290, 4310, 4270
+
+
+Con n = 30:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta: 54933642, 49954738, 50219247
+            Escalera64 (Base): 330, 350, 430
+            Escalera64 (Guardar caminos): 5081857548, 5513287562,  5879867739
+            Escalera64 (Menor camino): 9350, 9690, 8950
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 519685, 531815, 512026
+            Escalera64 (Base): 390, 410, 380
+            Escalera64 (Guardar caminos): 39778074, 28761269, 29131212
+            Escalera64 (Menor camino): 12080, 21249, 11570
+    Con p = 4:
+        Con r = 0:
+            Fuerza Bruta: 61220, 59029, 59089
+            Escalera64 (Base): 280, 310, 240
+            Escalera64 (Guardar caminos): 3810658, 3628669, 3669619
+            Escalera64 (Menor camino): 13100, 10880, 10530
+
+Con n = 40:
+    Con p = 2:
+        Con r = 0:
+            Fuerza Bruta: 15589300768, 15264668583, 15404710588
+            Escalera64 (Base): 660, 570, 570
+            Escalera64 (Guardar caminos): X
+            Escalera64 (Menor camino): 15050, 14380, 16740
+
+    Con p = 3:
+        Con r = 0:
+            Fuerza Bruta: 29406102, 29033796, 27855934
+            Escalera64 (Base): 380, 440, 360
+            Escalera64 (Guardar caminos): 1764526269, 1827067849, 1632444887
+            Escalera64 (Menor camino): 12720, 13310, 12970
+
+    Con p = 4:
+        Con r = 0:
+            Fuerza Bruta: 1591707, 1645986, 1650406
+            Escalera64 (Base): 350, 280, 360
+            Escalera64 (Guardar caminos): 102197437, 103000495, 103154449
+            Escalera64 (Menor camino): 12280, 12790, 14350
+
+    Con p = 5:
+        Con r = 0:
+            Fuerza Bruta: 466676, 341317, 339867
+            Escalera64 (Base): 330, 300, 370
+            Escalera64 (Guardar caminos): 19289275, 18613541, 17930727
+            Escalera64 (Menor camino): 15040, 11920, 12640
+
+Los algoritmos, al usar int dejan de funcionar sobre n=42, r=0 y p=2, excepto INF
+
+con n = 60, p = 2 y r = 0: Escalera64 (Menor camino): 23900, 19420, 19300
+con n = 60, p = 2 y r = 2: Escalera64 (Menor camino): 25750, 19300, 18869
+con n = 60, p = 2 y r = 10: Escalera64 (Menor camino): 20400, 20040, 21140
+con n = 60, p = 2 y r = 20: Escalera64 (Menor camino): 14520, 16520, 17530
+con n = 60, p = 3 y r = 0: Escalera64 (Menor camino): 16190, 15820, 20630
+con n = 60, p = 5 y r = 0: Escalera64 (Menor camino): 14750, 16470, 14260
+con n = 60, p = 7 y r = 0: Escalera64 (Menor camino): 14060, 13700, 19129
+con n = 60, p = 10, r = 0:  Escalera64 (Menor camino): 15060, 15390, 13430
