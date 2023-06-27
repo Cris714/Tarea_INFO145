@@ -121,8 +121,8 @@ int main(int argc, char** argv) {
             make_tuple('C', '6', 17)
         };
 
-        Pi = 'S';
-        Ii = '1';
+        Pi = 'F';
+        Ii = '5';
 
         print(costosPuertos, costosIslas, costoBarco);
         cout << "Nodo inicial: " << Pi << "\nNodo final: " << Ii << endl;
@@ -146,8 +146,8 @@ int main(int argc, char** argv) {
     auto [min_cost, besti, bestj] = puertosIslas(Puertos, Pi , Islas, Ii, costoBarco, Puertosh, Islash);
     //Se imprimen los resultados: el costo minimo de capital a capital, y cuales son el puerto y la isla que se uso 
     cout << "Costo Mínimo: " << min_cost << endl;
-    cout << "Mejor puerto habilitado: " << get<0>(costoBarco[besti]) << endl;
-    cout << "Mejor isla habilitada: " << get<1>(costoBarco[bestj]) << endl;
+    cout << "Mejor puerto habilitado: " << get<0>(costoBarco[besti-1]) << endl;
+    cout << "Mejor isla habilitada: " << get<1>(costoBarco[bestj-1]) << endl;
 
     return 0;
 }
