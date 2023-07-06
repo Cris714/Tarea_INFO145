@@ -37,6 +37,8 @@ unordered_map<unsigned int, int> dijkstra(GrafoD& graph, unsigned int source);
 tuple<int, int, int> puertosIslas(GrafoD& Puertos, unsigned int s, Grafo& Islas, unsigned int z, vector<tuple<unsigned int, unsigned int, int>>& costoBarco, vector<unsigned int>& Puertosh, vector<unsigned int>& Islash);
 void creaConexiones(vector<unsigned int> &nodos, vector<tuple<unsigned int, unsigned int, int>> &costosPuertos);
 void print(vector<tuple<unsigned int,unsigned int,int>> costosPuertos, vector<tuple<unsigned int,unsigned int,int>> costosIslas, vector<tuple<unsigned int,unsigned int,int>> costoBarco);
+void creaConexionesDigrafo(vector<unsigned int> nodos, vector<tuple<unsigned int, unsigned int, int>> &costoPuertos);
+
 
 int main(int argc, char** argv) {
     //Se inicializan las variables
@@ -81,15 +83,14 @@ int main(int argc, char** argv) {
 
     // Se crean conexiones hasta hacerlos grafos conexos por separado, luego a cada uno se le
     // agregan aristas de mas
-    creaConexiones(nodosI, costosPuertos);
+    creaConexionesDigrafo(nodosI, costosPuertos);
     creaConexiones(nodosD, costosIslas);
-    for (int i = 0; i < log2(rand()%nodosI.size())*2; i++){
-        unsigned int nodo_1 = rand()%nodosI.size();
-        unsigned int nodo_2 = rand()%nodosI.size();
-        if (nodo_1 == nodo_2) continue;
+    int maxExtraConnections = rand();
+    for (int i = 0; i < (int)(maxExtraConnections%nodosI.size()/3); i++)
         costosPuertos.push_back(tuple<unsigned int, unsigned int, int> 
-        (nodosI[nodo_1], nodosI[nodo_2], rand()%21));
-    }
+        (nodosI[i+1], nodosI[i+3], rand()%21));
+    
+    
     for (int i = 0; i < log2(rand()%nodosD.size())*2; i++){
         unsigned int nodo_1 = rand()%nodosD.size();
         unsigned int nodo_2 = rand()%nodosD.size();
@@ -133,7 +134,7 @@ int main(int argc, char** argv) {
     Ii = nodosD[0];
 
     if (n <= 100) print(costosPuertos,costosIslas,costoBarco);
-    cout << "Nodo inicial: " << Pi << "\nNodo final: " << Ii << endl;
+    cout << endl << "Nodo inicial: " << Pi << "\nNodo final: " << Ii;
     cout << endl;
     
     // Se agregan los vertices y aristas calculados a nuestra estructura de grafos y digrafos
@@ -291,5 +292,16 @@ void creaConexiones(vector<unsigned int> &nodos, vector<tuple<unsigned int, unsi
 
         visitados.insert(nodo);
         costosPuertos.push_back(make_tuple(nodo, conectar, rand() % 21));
+    }
+}
+
+// Genera las transiciones de un digrafo que tiene un camino desde el inicial a todos los nodos.
+void creaConexionesDigrafo(vector<unsigned int> nodos, vector<tuple<unsigned int, unsigned int, int>> &costoPuertos){
+
+    unsigned int v1 = nodos.back();
+    while (nodos.pop_back(), nodos.size() != 0){
+        unsigned int v2 = nodos.back();
+        costoPuertos.push_back(make_tuple(v2,v1,rand() % 21));
+        v1 = v2;
     }
 }
